@@ -1,28 +1,3 @@
-/**The MIT License (MIT)
-
-Copyright (c) 2018 by Daniel Eichhorn - ThingPulse
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-See more at https://thingpulse.com
-*/
-
 #include <Arduino.h>
 
 #include <ESPWiFi.h>
@@ -48,10 +23,6 @@ See more at https://thingpulse.com
 /***************************
  * Begin Settings
  **************************/
-
-//// WIFI
-//const char* WIFI_SSID = "a_luck";
-//const char* WIFI_PWD = "w0shiwifI!0";
 
 #define TZ              7       // (utc+) 北京东八区
 #define DST_MN          60      // use 60mn for summer time in some countries
@@ -156,17 +127,13 @@ void setup() {
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setContrast(255);
 
-//  WiFi.begin(WIFI_SSID, WIFI_PWD);
-//display.setTextSize(1);      // Normal 1:1 pixel scale
-//  display.setTextColor(WHITE); // Draw white text
-//  display.setCursor(0, 0);
   display.drawString(64, 10,"WIFI CONNECTING");
   display.display();
 
   WiFiManager wifiManager;
 
   wifiManager.setAPCallback(configModeCallback);
-  if (!wifiManager.autoConnect("EspWeather")) {
+  if (!wifiManager.autoConnect("Esp01Weather")) {
     Serial.println("failed to connect and hit timeout");
     //reset and try again, or maybe put it to deep sleep
     ESP.reset();
